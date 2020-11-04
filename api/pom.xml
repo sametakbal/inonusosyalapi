@@ -11,7 +11,7 @@
 	<groupId>com.inonusosyal</groupId>
 	<artifactId>api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Samet Akbal</name>
+	<name>Inonu Sosyal</name>
 	<description>Social Network for Inonu University</description>
 
 	<properties>

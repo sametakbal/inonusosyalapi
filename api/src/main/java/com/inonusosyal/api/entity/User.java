@@ -1,16 +1,33 @@
 package com.inonusosyal.api.entity;
 
+import javax.persistence.*;
+import java.util.UUID;
+
+@Entity
+@Table(name = "users")
 public class User {
-    private String id;
+    @Id
+    @Column(name="id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private UUID id;
+    @Column(name="profilepicture")
     private String profilePicture;
+    @Column(name="name")
     private String name;
+    @Column(name="surname")
     private String surname;
+    @Column(name="email")
     private String email;
+    @Column(name="password")
     private String password;
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name="gender")
     private Gender gender;
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name="status")
     private Status status;
 
-    public User(String id, String profilePicture, String name, String surname, String email, String password, Gender gender, Status status) {
+    public User(UUID id, String profilePicture, String name, String surname, String email, String password, Gender gender, Status status) {
         this.id = id;
         this.profilePicture = profilePicture;
         this.name = name;
@@ -24,11 +41,11 @@ public class User {
     public User() {
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -88,11 +105,11 @@ public class User {
         this.status = status;
     }
 
-    enum Gender{
+    public enum Gender{
         Male,
         Female
     }
-    enum Status{
+    public enum Status{
         Student,
         Academician
     }

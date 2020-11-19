@@ -1,28 +1,25 @@
-package com.inonusosyal.api.entity;
+package com.inonusosyal.api.entity.Dto;
+
+import com.inonusosyal.api.entity.User;
 
 import java.util.UUID;
-public class User {
+
+public class UserDto {
     private UUID id;
     private String profilePicture;
     private String name;
     private String surname;
     private String email;
-    private String password;
-    private Gender gender;
-    private Status status;
 
-    public User(UUID id, String profilePicture, String name, String surname, String email, String password, Gender gender, Status status) {
+    public UserDto() {
+    }
+
+    public UserDto(UUID id, String profilePicture, String name, String surname, String email) {
         this.id = id;
         this.profilePicture = profilePicture;
         this.name = name;
         this.surname = surname;
         this.email = email;
-        this.password = password;
-        this.gender = gender;
-        this.status = status;
-    }
-
-    public User() {
     }
 
     public UUID getId() {
@@ -63,38 +60,5 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
-    public enum Gender{
-        Male,
-        Female
-    }
-    public enum Status{
-        Student,
-        Academician
     }
 }

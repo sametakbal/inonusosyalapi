@@ -15,8 +15,7 @@ public class UserDao extends Dao implements IUserDao {
     public List<User> get() {
         String q = "select * from users";
         List<User> list = new ArrayList<>();
-        try {
-            PreparedStatement pst = this.getConn().prepareStatement(q);
+        try (PreparedStatement pst = this.getConn().prepareStatement(q)){
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
@@ -103,11 +102,9 @@ public class UserDao extends Dao implements IUserDao {
     @Override
     public int remove(UUID id) {
         String q ="delete from users where id = ?";
-        try {
-            PreparedStatement pst = this.getConn().prepareStatement(q);
+        try (PreparedStatement pst = this.getConn().prepareStatement(q)) {
             pst.setObject(1, id);
             pst.executeQuery();
-            pst.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());

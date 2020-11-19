@@ -18,10 +18,23 @@ public class UserService {
         this.userDao = userDao;
     }
 
-    public List<User> selectAllUsers(){
-        return userDao.getAllUsers();
+    public List<User> selectAllUsers() {
+        return userDao.get();
     }
 
-    public Optional<User> getUserById(UUID id){return userDao.getUserById(id);}
+    public Optional<User> getUserById(UUID id) {
+        return userDao.getById(id);
+    }
 
+    public boolean addUser(User user) {
+        return userDao.add(user) == 1;
+    }
+
+    public boolean update(User user) {
+        return userDao.update(user) == 1;
+    }
+
+    public boolean deleteUser(UUID id) {
+        return userDao.remove(id)==1;
+    }
 }

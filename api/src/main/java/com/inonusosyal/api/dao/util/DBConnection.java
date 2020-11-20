@@ -1,4 +1,4 @@
-package com.inonusosyal.api.dao;
+package com.inonusosyal.api.dao.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,7 +20,6 @@ public class DBConnection {
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }
-
         return conn;
     }
 

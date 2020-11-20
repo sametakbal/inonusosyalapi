@@ -1,4 +1,6 @@
 package com.inonusosyal.api.dao;
+import com.inonusosyal.api.dao.util.DBConnection;
+
 import java.sql.Connection;
 
 public class Dao {

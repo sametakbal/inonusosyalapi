@@ -1,5 +1,6 @@
 package com.inonusosyal.api.dao;
 
+import com.inonusosyal.api.dao.interfaces.IUserDao;
 import com.inonusosyal.api.entity.User;
 import org.springframework.stereotype.Repository;
 

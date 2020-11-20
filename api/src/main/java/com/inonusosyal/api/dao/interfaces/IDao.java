@@ -1,7 +1,4 @@
-package com.inonusosyal.api.dao;
-
-import com.inonusosyal.api.entity.User;
-
+package com.inonusosyal.api.dao.interfaces;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;

@@ -1,0 +1,95 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+create table users(
+	id uuid DEFAULT uuid_generate_v4(),
+	profilePicture varchar(255),
+	name varchar(255) not null,
+	surname varchar(255) not null,
+	email varchar(55) not null unique,
+	password varchar(16) not null,
+	gender smallint,
+	status smallint,
+	primary key(id)
+);
+
+create table groups(
+	id uuid DEFAULT uuid_generate_v4(),
+	title varchar(255) not null,
+	description varchar(1000) not null,
+	founder uuid,
+	primary key(id),
+   	CONSTRAINT fk_founder
+      	FOREIGN KEY(founder) 
+	  REFERENCES users(id) on delete cascade
+);
+
+create table message(
+	id uuid DEFAULT uuid_generate_v4(),
+	content varchar(255) not null,
+	sender uuid,
+	receiver uuid,
+	created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+	primary key(id),
+	CONSTRAINT fk_sender
+      	FOREIGN KEY(sender) 
+	  REFERENCES users(id) on delete cascade,
+	CONSTRAINT fk_receiver
+      	FOREIGN KEY(receiver) 
+	  REFERENCES users(id) on delete cascade
+);
+
+create table media(
+	id uuid DEFAULT uuid_generate_v4(),
+	name varchar(255) not null,
+	url varchar(255) not null,
+	post_id uuid,
+	primary key(id),
+	CONSTRAINT fk_post
+      	FOREIGN KEY(post_id) 
+	  REFERENCES post(id) on delete cascade
+);
+
+create table post(
+	id uuid DEFAULT uuid_generate_v4(),
+	content text,
+	owner uuid,
+	publish_time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+	primary key(id),
+	CONSTRAINT fk_owner
+      	FOREIGN KEY(owner) 
+	  REFERENCES users(id) on delete cascade
+);
+
+create table comment(
+	id uuid DEFAULT uuid_generate_v4(),
+	owner uuid,
+	content varchar(1000),
+	publish_time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+	CONSTRAINT fk_owner
+      	FOREIGN KEY(owner) 
+	  REFERENCES users(id) on delete cascade
+);
+
+
+create table group_users(
+	group_id uuid,
+	user_id uuid,
+	CONSTRAINT fk_group
+      	FOREIGN KEY(group_id) 
+	  REFERENCES groups(id) on delete cascade,
+	FOREIGN KEY(user_id) 
+	  REFERENCES users(id) on delete cascade
+);
+
+create table users_followers(
+	user_id uuid,
+	follower_id uuid,
+	CONSTRAINT fk_user
+      	FOREIGN KEY(user_id) 
+	  REFERENCES users(id) on delete cascade,
+	FOREIGN KEY(follower_id)
+		REFERENCES users(id) on delete cascade
+);
+
+//Example Queries
+select * from message where (sender='8f45827f-b3a5-4924-82de-476c93f6a7ea' and receiver='b8f2840b-ec96-4237-a0c4-49b700494786')
+                         or (sender='b8f2840b-ec96-4237-a0c4-49b700494786' and receiver='8f45827f-b3a5-4924-82de-476c93f6a7ea');

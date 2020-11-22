@@ -14,7 +14,7 @@ public class DBConnection {
             Class.forName("org.postgresql.Driver");
             String password = "1234";
             String user = "postgres";
-            String url = "jdbc:postgresql://localhost/inonu_sosyal";
+            String url = "jdbc:postgresql://localhost/inonusosyal";
             conn = DriverManager.getConnection(url, user, password);
             System.out.println("Connected to the PostgreSQL server successfully.");
         } catch (SQLException | ClassNotFoundException e) {

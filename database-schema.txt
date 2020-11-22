@@ -37,17 +37,6 @@ create table message(
 	  REFERENCES users(id) on delete cascade
 );
 
-create table media(
-	id uuid DEFAULT uuid_generate_v4(),
-	name varchar(255) not null,
-	url varchar(255) not null,
-	post_id uuid,
-	primary key(id),
-	CONSTRAINT fk_post
-      	FOREIGN KEY(post_id) 
-	  REFERENCES post(id) on delete cascade
-);
-
 create table post(
 	id uuid DEFAULT uuid_generate_v4(),
 	content text,
@@ -57,6 +46,17 @@ create table post(
 	CONSTRAINT fk_owner
       	FOREIGN KEY(owner) 
 	  REFERENCES users(id) on delete cascade
+);
+
+create table media(
+	id uuid DEFAULT uuid_generate_v4(),
+	name varchar(255) not null,
+	url varchar(255) not null,
+	post_id uuid,
+	primary key(id),
+	CONSTRAINT fk_post
+      	FOREIGN KEY(post_id) 
+	  REFERENCES post(id) on delete cascade
 );
 
 create table comment(

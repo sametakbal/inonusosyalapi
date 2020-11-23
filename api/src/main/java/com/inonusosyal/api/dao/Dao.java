@@ -13,7 +13,7 @@ public class Dao {
 
     public Connection getConn() {
         if (this.conn == null) {
-            this.conn = getDb().connect();
+            this.conn = getDb().getConnector();
         }
         return this.conn;
     }

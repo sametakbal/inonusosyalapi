@@ -1,26 +1,21 @@
-package com.inonusosyal.api.entity;
+package com.inonusosyal.api.entity.Dto;
 
-import java.util.List;
 import java.util.UUID;
 
-public class Group {
+public class GroupDto {
     private UUID id;
     private String groupIcon;
     private String title;
     private String description;
-    private User founder;
-    private List<User> members;
 
-    public Group() {
+    public GroupDto() {
     }
 
-    public Group(UUID id, String groupIcon, String title, String description, User founder, List<User> members) {
+    public GroupDto(UUID id, String groupIcon, String title, String description) {
         this.id = id;
         this.groupIcon = groupIcon;
         this.title = title;
         this.description = description;
-        this.founder = founder;
-        this.members = members;
     }
 
     public UUID getId() {
@@ -53,21 +48,5 @@ public class Group {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public User getFounder() {
-        return founder;
-    }
-
-    public void setFounder(User founder) {
-        this.founder = founder;
-    }
-
-    public List<User> getMembers() {
-        return members;
-    }
-
-    public void setMembers(List<User> members) {
-        this.members = members;
     }
 }

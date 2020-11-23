@@ -1,6 +1,7 @@
 package com.inonusosyal.api.service;
 
 import com.inonusosyal.api.dao.UserDao;
+import com.inonusosyal.api.entity.Dto.UserProfileDto;
 import com.inonusosyal.api.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class UserService {
         return userDao.get();
     }
 
-    public Optional<User> getUserById(UUID id) {
+    public Optional<UserProfileDto> getUserById(UUID id) {
         return userDao.getById(id);
     }
 

@@ -29,8 +29,4 @@ public class DBConnection {
         }
         return this.connector;
     }
-
-    public void setConnector(Connection connector) {
-        this.connector = connector;
-    }
 }

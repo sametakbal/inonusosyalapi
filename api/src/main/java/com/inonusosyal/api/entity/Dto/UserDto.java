@@ -10,16 +10,20 @@ public class UserDto {
     private String name;
     private String surname;
     private String email;
+    private User.Gender gender;
+    private User.Status status;
 
     public UserDto() {
     }
 
-    public UserDto(UUID id, String profilePicture, String name, String surname, String email) {
+    public UserDto(UUID id, String profilePicture, String name, String surname, String email, User.Gender gender, User.Status status) {
         this.id = id;
         this.profilePicture = profilePicture;
         this.name = name;
         this.surname = surname;
         this.email = email;
+        this.gender = gender;
+        this.status = status;
     }
 
     public UUID getId() {
@@ -60,5 +64,21 @@ public class UserDto {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public User.Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(User.Gender gender) {
+        this.gender = gender;
+    }
+
+    public User.Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(User.Status status) {
+        this.status = status;
     }
 }

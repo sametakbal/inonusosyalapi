@@ -13,7 +13,6 @@ public class MessageDao extends Dao implements IMessageDao {
         return null;
     }
 
-    @Override
     public Optional<Message> getById(UUID id) {
         return Optional.empty();
     }

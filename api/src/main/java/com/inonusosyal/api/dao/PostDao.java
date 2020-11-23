@@ -13,7 +13,6 @@ public class PostDao extends Dao implements IPostDao {
         return null;
     }
 
-    @Override
     public Optional<Post> getById(UUID id) {
         return Optional.empty();
     }

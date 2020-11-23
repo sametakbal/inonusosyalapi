@@ -13,7 +13,6 @@ public class CommentDao extends Dao implements ICommentDao {
         return null;
     }
 
-    @Override
     public Optional<Comment> getById(UUID id) {
         return Optional.empty();
     }

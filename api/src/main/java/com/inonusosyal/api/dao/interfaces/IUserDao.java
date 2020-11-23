@@ -13,4 +13,6 @@ public interface IUserDao extends IDao<User>{
     List<UserDto> getUserFollows(UUID uuid);
     List<UserDto> searchUserByNameOrSurname(String term);
     Optional<UserProfileDto> getById(UUID id);
+    boolean followUser(UUID userId, UUID userToFollow);
+    boolean unFollowUser(UUID userId, UUID userToFollow);
 }

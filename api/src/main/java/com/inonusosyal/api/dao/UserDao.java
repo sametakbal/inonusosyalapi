@@ -67,6 +67,40 @@ public class UserDao extends Dao implements IUserDao {
     }
 
     @Override
+    public boolean followUser(UUID userId, UUID userToFollow) {
+        String q = "insert into users_followers (user_id,follower_id) values (?,?)";
+        try {
+            PreparedStatement pst = this.getConn().prepareStatement(q);
+            pst.setObject(1, userToFollow);
+            pst.setObject(2, userId);
+
+            pst.executeQuery();
+            pst.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
+    @Override
+    public boolean unFollowUser(UUID userId, UUID userToFollow) {
+        String q = "delete from users_followers (user_id,follower_id) values (?,?)";
+        try {
+            PreparedStatement pst = this.getConn().prepareStatement(q);
+            pst.setObject(1, userToFollow);
+            pst.setObject(2, userId);
+
+            pst.executeQuery();
+            pst.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return true;
+    }
+
+    @Override
     public int add(User user) {
         String q = "insert into users (id,profilePicture,name,surname,email,password,gender,status) values (default,?,?,?,?,?,?,?)";
         try {

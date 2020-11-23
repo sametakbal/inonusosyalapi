@@ -3,7 +3,6 @@ package com.inonusosyal.api.dao;
 import com.inonusosyal.api.dao.interfaces.IUserDao;
 import com.inonusosyal.api.entity.Dto.UserDto;
 import com.inonusosyal.api.entity.Dto.UserProfileDto;
-import com.inonusosyal.api.entity.Group;
 import com.inonusosyal.api.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -172,5 +171,36 @@ public class UserDao extends Dao implements IUserDao {
         }
 
         return userFollows;
+    }
+
+    @Override
+    public List<UserDto> searchUserByNameOrSurname(String term) {
+        String q ="select users.id,users.profilepicture,users.name,users.surname,users.email,users.gender,users.status from users\n" +
+                "where name like ? or  name like ? or  name like ? or\n" +
+                "surname like ? or surname like ? or surname like ?;";
+        List<UserDto> users = new ArrayList<>();
+        try {
+            PreparedStatement pst = this.getConn().prepareStatement(q);
+            pst.setString(1,"%"+term);
+            pst.setString(2,"%"+term+"%");
+            pst.setString(3,term+"%");
+            pst.setString(4,"%"+term);
+            pst.setString(5,"%"+term+"%");
+            pst.setString(6,term+"%");
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                User.Gender gender = rs.getInt("gender") == 0 ? User.Gender.Male : User.Gender.Female;
+                User.Status status = rs.getInt("status") == 0 ? User.Status.Student : User.Status.Academician;
+                UserDto tmp = new UserDto(rs.getObject("id", java.util.UUID.class), rs.getString("profilepicture"), rs.getString("name"), rs.getString("surname"),
+                        rs.getString("email"), gender, status);
+                users.add(tmp);
+            }
+            pst.close();
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return users;
     }
 }

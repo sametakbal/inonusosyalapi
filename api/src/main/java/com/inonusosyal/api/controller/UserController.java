@@ -1,5 +1,6 @@
 package com.inonusosyal.api.controller;
 
+import com.inonusosyal.api.entity.Dto.UserDto;
 import com.inonusosyal.api.entity.User;
 import com.inonusosyal.api.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +63,14 @@ public class UserController {
     )
     public boolean deleteUser(@PathVariable("id") UUID id){
         return userService.deleteUser(id);
+    }
+
+    @RequestMapping(
+            method = RequestMethod.GET,
+            path = "search"
+    )
+    public List<UserDto> searchAllUsers(@RequestParam String term){
+        return userService.searchUsers(term);
     }
 
 }

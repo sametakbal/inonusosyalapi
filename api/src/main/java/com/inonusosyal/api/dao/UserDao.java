@@ -23,18 +23,14 @@ public class UserDao extends Dao implements IUserDao {
 
     @Override
     public List<User> get() {
-        String q = "select * from users";
+        String q = "select * from users order by name";
         List<User> list = new ArrayList<>();
         try {
             PreparedStatement pst = this.getConn().prepareStatement(q);
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
-                User.Gender gender = rs.getInt("gender") == 0 ? User.Gender.Male : User.Gender.Female;
-                User.Status status = rs.getInt("status") == 0 ? User.Status.Student : User.Status.Academician;
-                User tmp = new User(rs.getObject("id", java.util.UUID.class), rs.getString("profilepicture"), rs.getString("name"), rs.getString("surname"),
-                        rs.getString("email"), rs.getString("password"), gender, status);
-                list.add(tmp);
+                list.add(userMapper(rs));
             }
             pst.close();
             rs.close();
@@ -236,5 +232,13 @@ public class UserDao extends Dao implements IUserDao {
         }
 
         return users;
+    }
+
+    private  User userMapper(ResultSet rs) throws SQLException{
+        User.Gender gender = rs.getInt("gender") == 0 ? User.Gender.Male : User.Gender.Female;
+        User.Status status = rs.getInt("status") == 0 ? User.Status.Student : User.Status.Academician;
+        return new User(rs.getObject("id", java.util.UUID.class), rs.getString("profilepicture"),
+                rs.getString("name"), rs.getString("surname"),
+                rs.getString("email"), rs.getString("password"), gender, status);
     }
 }

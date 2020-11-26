@@ -58,7 +58,28 @@ public class PostDao extends Dao implements IPostDao {
     }
 
     public Optional<Post> getById(UUID id) {
-        return Optional.empty();
+        String q = "select * from post where id=?";
+        Post post = null;
+        try {
+            PreparedStatement pst = this.getConn().prepareStatement(q);
+            pst.setObject(1, id);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                Group group = getGroupDao().getById(rs.getObject("owner", java.util.UUID.class)).isPresent() ?
+                        getGroupDao().getById(rs.getObject("owner", java.util.UUID.class)).get() : null;
+                post = new Post(rs.getObject("id", java.util.UUID.class),
+                        getUserDao().getUserDtoById(rs.getObject("owner", java.util.UUID.class)),
+                        rs.getString("content"),
+                        group,
+                        rs.getDate("publish_time"));
+            }
+            pst.close();
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return Optional.ofNullable(post);
     }
 
     @Override

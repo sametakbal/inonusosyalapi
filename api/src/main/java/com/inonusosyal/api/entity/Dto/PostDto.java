@@ -8,11 +8,11 @@ import java.util.UUID;
 public class PostDto extends Post {
 
     private List<Media> medias;
-    private List<Comment> comments;
+    private List<CommentDto> comments;
 
     public PostDto() {}
 
-    public PostDto(UUID id, UserDto owner, String content, Group group, Date publishedTime, List<Media> medias, List<Comment> comments) {
+    public PostDto(UUID id, UserDto owner, String content, Group group, Date publishedTime, List<Media> medias, List<CommentDto> comments) {
         super(id, owner, content, group, publishedTime);
         this.medias = medias;
         this.comments = comments;
@@ -26,11 +26,11 @@ public class PostDto extends Post {
         this.medias = medias;
     }
 
-    public List<Comment> getComments() {
+    public List<CommentDto> getComments() {
         return comments;
     }
 
-    public void setComments(List<Comment> comments) {
+    public void setComments(List<CommentDto> comments) {
         this.comments = comments;
     }
 }

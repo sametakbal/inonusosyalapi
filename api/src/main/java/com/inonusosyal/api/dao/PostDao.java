@@ -16,11 +16,13 @@ public class PostDao extends Dao implements IPostDao {
 
     private final UserDao userDao;
     private final GroupDao groupDao;
+    private final CommentDao commentDao;
 
     @Autowired
-    public PostDao(UserDao userDao, GroupDao groupDao) {
+    public PostDao(UserDao userDao, GroupDao groupDao, CommentDao commentDao) {
         this.userDao = userDao;
         this.groupDao = groupDao;
+        this.commentDao = commentDao;
     }
 
     @Override
@@ -46,7 +48,7 @@ public class PostDao extends Dao implements IPostDao {
                         group,
                         rs.getDate("publish_time"),
                         new ArrayList<>(),
-                        new ArrayList<>());
+                        commentDao.getCommentDtos(rs.getObject("id",java.util.UUID.class)));
                 groupPostList.add(tmp);
             }
             pst.close();

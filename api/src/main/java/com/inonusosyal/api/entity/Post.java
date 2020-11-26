@@ -1,25 +1,24 @@
 package com.inonusosyal.api.entity;
 
+import com.inonusosyal.api.entity.Dto.UserDto;
+
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
 public class Post {
     private UUID id;
-    private User owner;
+    private UserDto owner;
     private String content;
-    private List<Media> medias;
-    private List<Comment> comments;
+    private Group group;
     private Date publishedTime;
 
     public Post(){}
 
-    public Post(UUID id, User owner, String content, List<Media> medias, List<Comment> comments, Date publishedTime) {
+    public Post(UUID id, UserDto owner, String content, Group group, Date publishedTime) {
         this.id = id;
         this.owner = owner;
         this.content = content;
-        this.medias = medias;
-        this.comments = comments;
+        this.group = group;
         this.publishedTime = publishedTime;
     }
 
@@ -31,11 +30,19 @@ public class Post {
         this.id = id;
     }
 
-    public User getOwner() {
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
+    public UserDto getOwner() {
         return owner;
     }
 
-    public void setOwner(User owner) {
+    public void setOwner(UserDto owner) {
         this.owner = owner;
     }
 
@@ -45,22 +52,6 @@ public class Post {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public List<Media> getMedias() {
-        return medias;
-    }
-
-    public void setMedias(List<Media> medias) {
-        this.medias = medias;
-    }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
     }
 
     public Date getPublishedTime() {

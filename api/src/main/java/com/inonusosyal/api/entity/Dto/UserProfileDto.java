@@ -9,10 +9,10 @@ import java.util.UUID;
 public class UserProfileDto extends UserDto {
     private List<UserDto> followers;
     private List<UserDto> following;
-    private List<GroupDto> groups;
+    private List<Group> groups;
 
     public UserProfileDto(UUID id, String profilePicture, String name, String surname, String email,
-                          User.Gender gender, User.Status status, List<UserDto> followers, List<UserDto> following, List<GroupDto> groups) {
+                          User.Gender gender, User.Status status, List<UserDto> followers, List<UserDto> following, List<Group> groups) {
         super(id, profilePicture, name, surname, email, gender, status);
         this.followers = followers;
         this.following = following;
@@ -35,11 +35,11 @@ public class UserProfileDto extends UserDto {
         this.following = following;
     }
 
-    public List<GroupDto> getGroups() {
+    public List<Group> getGroups() {
         return groups;
     }
 
-    public void setGroups(List<GroupDto> groups) {
+    public void setGroups(List<Group> groups) {
         this.groups = groups;
     }
 }

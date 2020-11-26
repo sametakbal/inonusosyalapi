@@ -1,5 +1,8 @@
 package com.inonusosyal.api.entity.Dto;
 
+import com.inonusosyal.api.entity.User;
+
+import java.util.List;
 import java.util.UUID;
 
 public class GroupDto {
@@ -7,15 +10,17 @@ public class GroupDto {
     private String groupIcon;
     private String title;
     private String description;
+    private List<User> members;
 
     public GroupDto() {
     }
 
-    public GroupDto(UUID id, String groupIcon, String title, String description) {
+    public GroupDto(UUID id, String groupIcon, String title, String description, List<User> members) {
         this.id = id;
         this.groupIcon = groupIcon;
         this.title = title;
         this.description = description;
+        this.members = members;
     }
 
     public UUID getId() {

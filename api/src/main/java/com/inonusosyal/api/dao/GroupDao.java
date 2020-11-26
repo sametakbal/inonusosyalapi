@@ -23,6 +23,8 @@ public class GroupDao extends Dao implements IGroupDao {
     }
 
     public Optional<Group> getById(UUID id) {
+        String q = "select * from ";
+
         return Optional.empty();
     }
 
@@ -42,16 +44,16 @@ public class GroupDao extends Dao implements IGroupDao {
     }
 
     @Override
-    public List<GroupDto> getUserGroups(UUID userUuid) {
+    public List<Group> getUserGroups(UUID userUuid) {
         String q = "select g.id,g.group_icon,g.title,g.description from groups g inner join group_users u on (u.user_id = ? and g.id = u.group_id)";
-        List<GroupDto> groups = new ArrayList<>();
+        List<Group> groups = new ArrayList<>();
         try {
             PreparedStatement pst = this.getConn().prepareStatement(q);
             pst.setObject(1, userUuid);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                GroupDto tmp = new GroupDto(rs.getObject("id", java.util.UUID.class), rs.getString("group_icon"),
-                        rs.getString("title"), rs.getString("description"));
+                Group tmp = new Group(rs.getObject("id", java.util.UUID.class), rs.getString("group_icon"),
+                        rs.getString("title"), rs.getString("description"),null);
                 groups.add(tmp);
             }
             pst.close();

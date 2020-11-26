@@ -1,5 +1,6 @@
 package com.inonusosyal.api.entity;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -9,18 +10,17 @@ public class Group {
     private String title;
     private String description;
     private User founder;
-    private List<User> members;
+    private Date lastUpdate;
 
     public Group() {
     }
 
-    public Group(UUID id, String groupIcon, String title, String description, User founder, List<User> members) {
+    public Group(UUID id, String groupIcon, String title, String description, User founder) {
         this.id = id;
         this.groupIcon = groupIcon;
         this.title = title;
         this.description = description;
         this.founder = founder;
-        this.members = members;
     }
 
     public UUID getId() {
@@ -63,11 +63,4 @@ public class Group {
         this.founder = founder;
     }
 
-    public List<User> getMembers() {
-        return members;
-    }
-
-    public void setMembers(List<User> members) {
-        this.members = members;
-    }
 }

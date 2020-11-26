@@ -7,5 +7,5 @@ import java.util.List;
 import java.util.UUID;
 
 public interface IGroupDao extends IDao<Group>{
-    List<GroupDto> getUserGroups(UUID userUuid);
+    List<Group> getUserGroups(UUID userUuid);
 }

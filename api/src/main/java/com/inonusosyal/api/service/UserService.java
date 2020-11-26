@@ -29,7 +29,7 @@ public class UserService {
     }
 
     public Optional<UserProfileDto> getUserById(UUID id) {
-        return userDao.getById(id);
+        return userDao.getUserProfileDtoById(id);
     }
 
     public boolean addUser(User user) {

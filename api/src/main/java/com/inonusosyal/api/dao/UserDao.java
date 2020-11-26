@@ -41,7 +41,7 @@ public class UserDao extends Dao implements IUserDao {
     }
 
     @Override
-    public Optional<UserProfileDto> getById(UUID id) {
+    public Optional<UserProfileDto> getUserProfileDtoById(UUID id) {
         String q = "select * from users where id=?";
         UserProfileDto tmp = null;
         try {
@@ -60,6 +60,28 @@ public class UserDao extends Dao implements IUserDao {
             System.out.println(e.getMessage());
         }
         return Optional.ofNullable(tmp);
+    }
+
+    @Override
+    public UserDto getUserDtoById(UUID uuid) {
+        String q = "select * from users where id=?";
+        UserDto tmp = null;
+        try {
+            PreparedStatement pst = this.getConn().prepareStatement(q);
+            pst.setObject(1, uuid);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                User.Gender gender = rs.getInt("gender") == 0 ? User.Gender.Male : User.Gender.Female;
+                User.Status status = rs.getInt("status") == 0 ? User.Status.Student : User.Status.Academician;
+                tmp = new UserDto(rs.getObject("id", java.util.UUID.class), rs.getString("profilepicture"), rs.getString("name"), rs.getString("surname"),
+                        rs.getString("email"), gender, status);
+            }
+            pst.close();
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return tmp;
     }
 
     @Override

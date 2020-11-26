@@ -22,6 +22,16 @@ public class User {
         this.status = status;
     }
 
+    public User(UUID id, String profilePicture, String name, String surname, String email, Gender gender, Status status) {
+        this.id = id;
+        this.profilePicture = profilePicture;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.gender = gender;
+        this.status = status;
+    }
+
     public User() {
     }
 

@@ -8,14 +8,17 @@ create table users(
 	password varchar(16) not null,
 	gender smallint,
 	status smallint,
+	last_update TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 	primary key(id)
 );
 
 create table groups(
 	id uuid DEFAULT uuid_generate_v4(),
+	group_icon varchar(255),
 	title varchar(255) not null,
 	description varchar(1000) not null,
 	founder uuid,
+	last_update TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 	primary key(id),
    	CONSTRAINT fk_founder
       	FOREIGN KEY(founder) 
@@ -42,10 +45,14 @@ create table post(
 	content text,
 	owner uuid,
 	publish_time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+	group_id uuid,
 	primary key(id),
 	CONSTRAINT fk_owner
       	FOREIGN KEY(owner) 
-	  REFERENCES users(id) on delete cascade
+	  REFERENCES users(id) on delete cascade,
+	CONSTRAINT fk_group
+      	FOREIGN KEY(group_id) 
+	  REFERENCES groups(id) on delete cascade
 );
 
 create table media(
@@ -61,18 +68,24 @@ create table media(
 
 create table comment(
 	id uuid DEFAULT uuid_generate_v4(),
-	owner uuid,
+	owner uuid not null,
 	content varchar(1000),
+	post_id uuid,
 	publish_time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+	primary key(id),
 	CONSTRAINT fk_owner
       	FOREIGN KEY(owner) 
-	  REFERENCES users(id) on delete cascade
+	  REFERENCES users(id) on delete cascade,
+	CONSTRAINT fk_post
+      	FOREIGN KEY(post_id) 
+	  REFERENCES post(id) on delete cascade
 );
 
 
 create table group_users(
 	group_id uuid,
 	user_id uuid,
+	last_update TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 	CONSTRAINT fk_group
       	FOREIGN KEY(group_id) 
 	  REFERENCES groups(id) on delete cascade,
@@ -83,11 +96,23 @@ create table group_users(
 create table users_followers(
 	user_id uuid,
 	follower_id uuid,
+	last_update TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 	CONSTRAINT fk_user
       	FOREIGN KEY(user_id) 
 	  REFERENCES users(id) on delete cascade,
 	FOREIGN KEY(follower_id)
 		REFERENCES users(id) on delete cascade
+);
+
+create table comment_replies(
+	comment_id uuid not null,
+	reply_id uuid not null,
+	CONSTRAINT fk_comment
+      	FOREIGN KEY(comment_id) 
+	  REFERENCES comment(id) on delete cascade,
+	CONSTRAINT fk_reply
+      	FOREIGN KEY(reply_id) 
+	  REFERENCES comment(id) on delete cascade
 );
 
 //Example Queries

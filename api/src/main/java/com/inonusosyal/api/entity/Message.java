@@ -1,18 +1,20 @@
 package com.inonusosyal.api.entity;
 
+import com.inonusosyal.api.entity.Dto.UserDto;
+
 import java.util.Date;
 import java.util.UUID;
 
 public class Message {
     private UUID id;
     private String content;
-    private User sender;
-    private User receiver;
+    private UserDto sender;
+    private UserDto receiver;
     private Date timeStamp;
 
     public  Message(){}
 
-    public Message(UUID id, String content, User sender, User receiver,Date timeStamp) {
+    public Message(UUID id, String content, UserDto sender, UserDto receiver,Date timeStamp) {
         this.id = id;
         this.content = content;
         this.sender = sender;
@@ -36,19 +38,19 @@ public class Message {
         this.content = content;
     }
 
-    public User getSender() {
+    public UserDto getSender() {
         return sender;
     }
 
-    public void setSender(User sender) {
+    public void setSender(UserDto sender) {
         this.sender = sender;
     }
 
-    public User getReceiver() {
+    public UserDto getReceiver() {
         return receiver;
     }
 
-    public void setReceiver(User receiver) {
+    public void setReceiver(UserDto receiver) {
         this.receiver = receiver;
     }
 

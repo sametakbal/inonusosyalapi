@@ -27,7 +27,7 @@ public class UserController {
     @RequestMapping(
             method = RequestMethod.GET
     )
-    public List<User> fetchUsers(){
+    public List<User> fetchUsers() {
         return userService.selectAllUsers();
     }
 
@@ -35,7 +35,7 @@ public class UserController {
             method = RequestMethod.GET,
             path = "{id}"
     )
-    public ResponseEntity<?> fetchUser(@PathVariable("id") UUID id){
+    public ResponseEntity<?> fetchUser(@PathVariable("id") UUID id) {
         return userService.getUserById(id).<ResponseEntity<?>>map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND)
                         .body(new ErrorMessage("user" + id + " was not found")));
@@ -45,7 +45,7 @@ public class UserController {
             method = RequestMethod.POST,
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
-    public boolean register(@RequestBody User user){
+    public boolean register(@RequestBody User user) {
         return userService.addUser(user);
     }
 
@@ -53,7 +53,7 @@ public class UserController {
             method = RequestMethod.PUT,
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
-    public boolean update(@RequestBody User user){
+    public boolean update(@RequestBody User user) {
         return userService.update(user);
     }
 
@@ -61,7 +61,7 @@ public class UserController {
             method = RequestMethod.DELETE,
             path = "{id}"
     )
-    public boolean deleteUser(@PathVariable("id") UUID id){
+    public boolean deleteUser(@PathVariable("id") UUID id) {
         return userService.deleteUser(id);
     }
 
@@ -69,11 +69,12 @@ public class UserController {
             method = RequestMethod.GET,
             path = "search"
     )
-    public List<UserDto> searchAllUsers(@RequestParam String term){
+    public List<UserDto> searchAllUsers(@RequestParam String term) {
         return userService.searchUsers(term);
     }
 
 }
+
 class ErrorMessage {
     String message;
 

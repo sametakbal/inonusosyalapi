@@ -6,7 +6,18 @@ import java.sql.SQLException;
 
 public class DBConnection {
 
+    private static DBConnection instance;
     private Connection connector=null;
+
+    private DBConnection() {
+    }
+
+    synchronized public static DBConnection getInstance(){
+        if (instance == null){
+            instance = new DBConnection();
+        }
+        return instance;
+    }
 
     public Connection connect() {
         Connection conn = null;

@@ -20,7 +20,7 @@ public class Dao {
 
     public DBConnection getDb() {
         if (this.db == null) {
-            this.db = new DBConnection();
+            this.db = DBConnection.getInstance();
         }
         return this.db;
     }

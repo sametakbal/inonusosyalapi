@@ -71,6 +71,7 @@ create table comment(
 	owner uuid not null,
 	content varchar(1000),
 	post_id uuid,
+	reply_id uuid,
 	publish_time TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 	primary key(id),
 	CONSTRAINT fk_owner
@@ -104,16 +105,6 @@ create table users_followers(
 		REFERENCES users(id) on delete cascade
 );
 
-create table comment_replies(
-	comment_id uuid not null,
-	reply_id uuid not null,
-	CONSTRAINT fk_comment
-      	FOREIGN KEY(comment_id) 
-	  REFERENCES comment(id) on delete cascade,
-	CONSTRAINT fk_reply
-      	FOREIGN KEY(reply_id) 
-	  REFERENCES comment(id) on delete cascade
-);
 
 //Example Queries
 select * from message where (sender='8f45827f-b3a5-4924-82de-476c93f6a7ea' and receiver='b8f2840b-ec96-4237-a0c4-49b700494786')

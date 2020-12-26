@@ -8,6 +8,7 @@ create table users(
 	password varchar(16) not null,
 	gender smallint,
 	status smallint,
+	is_verified boolean default false,
 	last_update TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 	primary key(id)
 );

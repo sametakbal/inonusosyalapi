@@ -16,4 +16,5 @@ public interface IUserDao extends IDao<User>{
     UserDto getUserDtoById(UUID uuid);
     boolean followUser(UUID userId, UUID userToFollow);
     boolean unFollowUser(UUID userId, UUID userToFollow);
+    boolean isEmailExist(String email);
 }

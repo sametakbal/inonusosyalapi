@@ -119,6 +119,21 @@ public class UserDao extends Dao implements IUserDao {
     }
 
     @Override
+    public boolean isEmailExist(String email) {
+        String q ="select id from users where email=?";
+        try{
+            PreparedStatement pst = this.getConn().prepareStatement(q);
+            pst.setString(1,email);
+            ResultSet rs = pst.executeQuery();
+            return rs.next();
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+
+        return false;
+    }
+
+    @Override
     public int add(User user) {
         String q = "insert into users (id,profilePicture,name,surname,email,password,gender,status) values (default,?,?,?,?,?,?,?)";
         try {

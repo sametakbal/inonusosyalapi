@@ -1,11 +1,11 @@
 package com.inonusosyal.api.dao;
-import com.inonusosyal.api.dao.util.DBConnection;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class Dao {
     private Connection conn;
-    private DBConnection db;
 
 
     public Dao() {
@@ -13,16 +13,18 @@ public class Dao {
 
     public Connection getConn() {
         if (this.conn == null) {
-            this.conn = getDb().getConnector();
-        }
+                try {
+                    Class.forName("org.postgresql.Driver");
+                    String password = "1234";
+                    String user = "postgres";
+                    String url = "jdbc:postgresql://localhost/inonusosyal";
+                    this.conn = DriverManager.getConnection(url, user, password);
+                    System.out.println("Connected to the PostgreSQL server successfully.");
+                } catch (SQLException | ClassNotFoundException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
         return this.conn;
-    }
-
-    public DBConnection getDb() {
-        if (this.db == null) {
-            this.db = DBConnection.getInstance();
-        }
-        return this.db;
     }
 
 }

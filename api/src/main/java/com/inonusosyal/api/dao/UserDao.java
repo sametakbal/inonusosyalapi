@@ -3,6 +3,8 @@ package com.inonusosyal.api.dao;
 import com.inonusosyal.api.dao.interfaces.IUserDao;
 import com.inonusosyal.api.entity.Dto.UserDto;
 import com.inonusosyal.api.entity.Dto.UserProfileDto;
+import com.inonusosyal.api.entity.Enums.Gender;
+import com.inonusosyal.api.entity.Enums.Status;
 import com.inonusosyal.api.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,6 +18,7 @@ import java.util.*;
 public class UserDao extends Dao implements IUserDao {
 
     private final GroupDao groupDao;
+
     @Autowired
     public UserDao(GroupDao groupDao) {
         this.groupDao = groupDao;
@@ -49,10 +52,10 @@ public class UserDao extends Dao implements IUserDao {
             pst.setObject(1, id);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
-                User.Gender gender = rs.getInt("gender") == 0 ? User.Gender.Male : User.Gender.Female;
-                User.Status status = rs.getInt("status") == 0 ? User.Status.Student : User.Status.Academician;
+                Gender gender = rs.getInt("gender") == 0 ? Gender.Male : Gender.Female;
+                Status status = rs.getInt("status") == 0 ? Status.Student : Status.Academician;
                 tmp = new UserProfileDto(rs.getObject("id", java.util.UUID.class), rs.getString("profilepicture"), rs.getString("name"), rs.getString("surname"),
-                        rs.getString("email"), gender, status,getUserFollowers(id),getUserFollows(id),groupDao.getUserGroups(id));
+                        rs.getString("email"), gender, status, getUserFollowers(id), getUserFollows(id), groupDao.getUserGroups(id));
             }
             pst.close();
             rs.close();
@@ -71,8 +74,8 @@ public class UserDao extends Dao implements IUserDao {
             pst.setObject(1, uuid);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
-                User.Gender gender = rs.getInt("gender") == 0 ? User.Gender.Male : User.Gender.Female;
-                User.Status status = rs.getInt("status") == 0 ? User.Status.Student : User.Status.Academician;
+                Gender gender = rs.getInt("gender") == 0 ? Gender.Male : Gender.Female;
+                Status status = rs.getInt("status") == 0 ? Status.Student : Status.Academician;
                 tmp = new UserDto(rs.getObject("id", java.util.UUID.class), rs.getString("profilepicture"), rs.getString("name"), rs.getString("surname"),
                         rs.getString("email"), gender, status);
             }
@@ -120,13 +123,13 @@ public class UserDao extends Dao implements IUserDao {
 
     @Override
     public boolean isEmailExist(String email) {
-        String q ="select id from users where email=?";
-        try{
+        String q = "select id from users where email=?";
+        try {
             PreparedStatement pst = this.getConn().prepareStatement(q);
-            pst.setString(1,email);
+            pst.setString(1, email);
             ResultSet rs = pst.executeQuery();
             return rs.next();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
 
@@ -179,7 +182,7 @@ public class UserDao extends Dao implements IUserDao {
 
     @Override
     public int remove(UUID id) {
-        String q ="delete from users where id = ?";
+        String q = "delete from users where id = ?";
         try (PreparedStatement pst = this.getConn().prepareStatement(q)) {
             pst.setObject(1, id);
             pst.executeQuery();
@@ -192,7 +195,7 @@ public class UserDao extends Dao implements IUserDao {
 
     @Override
     public List<UserDto> getUserFollowers(UUID uuid) {
-        String q ="select users.id,users.profilepicture,users.name,users.surname,users.email,users.gender,users.status from users \n" +
+        String q = "select users.id,users.profilepicture,users.name,users.surname,users.email,users.gender,users.status from users \n" +
                 "inner join users_followers on (users.id = users_followers.follower_id and users_followers.user_id=?)";
         List<UserDto> list = new ArrayList<>();
         try {
@@ -200,8 +203,8 @@ public class UserDao extends Dao implements IUserDao {
             pst.setObject(1, uuid);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                User.Gender gender = rs.getInt("gender") == 0 ? User.Gender.Male : User.Gender.Female;
-                User.Status status = rs.getInt("status") == 0 ? User.Status.Student : User.Status.Academician;
+                Gender gender = rs.getInt("gender") == 0 ? Gender.Male : Gender.Female;
+                Status status = rs.getInt("status") == 0 ? Status.Student : Status.Academician;
                 UserDto tmp = new UserDto(rs.getObject("id", java.util.UUID.class), rs.getString("profilepicture"), rs.getString("name"), rs.getString("surname"),
                         rs.getString("email"), gender, status);
                 list.add(tmp);
@@ -211,13 +214,13 @@ public class UserDao extends Dao implements IUserDao {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        
+
         return list;
     }
 
     @Override
     public List<UserDto> getUserFollows(UUID uuid) {
-        String q ="select users.id,users.profilepicture,users.name,users.surname,users.email,users.gender,users.status from users\n" +
+        String q = "select users.id,users.profilepicture,users.name,users.surname,users.email,users.gender,users.status from users\n" +
                 "inner join users_followers on (users.id = users_followers.user_id and users_followers.follower_id=?)";
         List<UserDto> userFollows = new ArrayList<>();
         try {
@@ -225,8 +228,8 @@ public class UserDao extends Dao implements IUserDao {
             pst.setObject(1, uuid);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                User.Gender gender = rs.getInt("gender") == 0 ? User.Gender.Male : User.Gender.Female;
-                User.Status status = rs.getInt("status") == 0 ? User.Status.Student : User.Status.Academician;
+                Gender gender = rs.getInt("gender") == 0 ? Gender.Male : Gender.Female;
+                Status status = rs.getInt("status") == 0 ? Status.Student : Status.Academician;
                 UserDto tmp = new UserDto(rs.getObject("id", java.util.UUID.class), rs.getString("profilepicture"), rs.getString("name"), rs.getString("surname"),
                         rs.getString("email"), gender, status);
                 userFollows.add(tmp);
@@ -242,22 +245,22 @@ public class UserDao extends Dao implements IUserDao {
 
     @Override
     public List<UserDto> searchUserByNameOrSurname(String term) {
-        String q ="select users.id,users.profilepicture,users.name,users.surname,users.email,users.gender,users.status from users\n" +
+        String q = "select users.id,users.profilepicture,users.name,users.surname,users.email,users.gender,users.status from users\n" +
                 "where name like ? or  name like ? or  name like ? or\n" +
                 "surname like ? or surname like ? or surname like ?;";
         List<UserDto> users = new ArrayList<>();
         try {
             PreparedStatement pst = this.getConn().prepareStatement(q);
-            pst.setString(1,"%"+term);
-            pst.setString(2,"%"+term+"%");
-            pst.setString(3,term+"%");
-            pst.setString(4,"%"+term);
-            pst.setString(5,"%"+term+"%");
-            pst.setString(6,term+"%");
+            pst.setString(1, "%" + term);
+            pst.setString(2, "%" + term + "%");
+            pst.setString(3, term + "%");
+            pst.setString(4, "%" + term);
+            pst.setString(5, "%" + term + "%");
+            pst.setString(6, term + "%");
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
-                User.Gender gender = rs.getInt("gender") == 0 ? User.Gender.Male : User.Gender.Female;
-                User.Status status = rs.getInt("status") == 0 ? User.Status.Student : User.Status.Academician;
+                Gender gender = rs.getInt("gender") == 0 ? Gender.Male : Gender.Female;
+                Status status = rs.getInt("status") == 0 ? Status.Student : Status.Academician;
                 UserDto tmp = new UserDto(rs.getObject("id", java.util.UUID.class), rs.getString("profilepicture"), rs.getString("name"), rs.getString("surname"),
                         rs.getString("email"), gender, status);
                 users.add(tmp);
@@ -271,9 +274,9 @@ public class UserDao extends Dao implements IUserDao {
         return users;
     }
 
-    private  User userMapper(ResultSet rs) throws SQLException{
-        User.Gender gender = rs.getInt("gender") == 0 ? User.Gender.Male : User.Gender.Female;
-        User.Status status = rs.getInt("status") == 0 ? User.Status.Student : User.Status.Academician;
+    private User userMapper(ResultSet rs) throws SQLException {
+        Gender gender = rs.getInt("gender") == 0 ? Gender.Male : Gender.Female;
+        Status status = rs.getInt("status") == 0 ? Status.Student : Status.Academician;
         return new User(rs.getObject("id", java.util.UUID.class), rs.getString("profilepicture"),
                 rs.getString("name"), rs.getString("surname"),
                 rs.getString("email"), rs.getString("password"), gender, status);

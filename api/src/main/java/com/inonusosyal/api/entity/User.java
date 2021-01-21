@@ -1,5 +1,8 @@
 package com.inonusosyal.api.entity;
 
+import com.inonusosyal.api.entity.Enums.Gender;
+import com.inonusosyal.api.entity.Enums.Status;
+
 import java.util.UUID;
 public class User {
     private UUID id;
@@ -99,12 +102,4 @@ public class User {
         this.status = status;
     }
 
-    public enum Gender{
-        Male,
-        Female
-    }
-    public enum Status{
-        Student,
-        Academician
-    }
 }

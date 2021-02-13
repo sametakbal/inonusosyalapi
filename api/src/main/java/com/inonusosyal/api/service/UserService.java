@@ -1,59 +1,59 @@
 package com.inonusosyal.api.service;
 
-import com.inonusosyal.api.dao.UserDao;
-import com.inonusosyal.api.entity.Dto.UserDto;
-import com.inonusosyal.api.entity.Dto.UserProfileDto;
-import com.inonusosyal.api.entity.User;
+import com.inonusosyal.api.entity.Enums.Role;
+import com.inonusosyal.api.entity.UserEntity;
+import com.inonusosyal.api.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.sql.Timestamp;
 import java.util.Optional;
 import java.util.UUID;
 
 @Service
 public class UserService {
-    private final UserDao userDao;
+    private final IUserRepository repo;
 
     @Autowired
-    public UserService(UserDao userDao) {
-        this.userDao = userDao;
+    public UserService(IUserRepository repo) {
+        this.repo = repo;
     }
 
-    public List<User> selectAllUsers() {
-        return userDao.get();
-    }
-
-    public List<UserDto> searchUsers(String term) {
-        return userDao.searchUserByNameOrSurname(term);
-    }
-
-    public Optional<UserProfileDto> getUserById(UUID id) {
-        return userDao.getUserProfileDtoById(id);
-    }
-
-    public boolean addUser(User user) {
-        if (emailCheck(user.getEmail().substring(user.getEmail().indexOf("@")+1))){
-           return false;
-        }else if (userDao.isEmailExist(user.getEmail())){
-            return false;
+    public Optional<UserEntity> getUserById(String userid) {
+        UUID uuid;
+        try {
+            uuid = UUID.fromString(userid);
+        } catch (IllegalArgumentException ex) {
+            return Optional.empty();
         }
-        return userDao.add(user) == 1;
+        return repo.findById(uuid);
     }
 
-    public boolean update(User user) {
-        return userDao.update(user) == 1;
+    public Optional<UserEntity> addUser(UserEntity user) {
+        if (repo.findByEmail(user.getEmail()) != null || repo.findByEmail(user.getEmail()) != null) {
+            return Optional.empty();
+        }
+        if (emailCheck(user.getEmail())) {
+            user.setRole(getUserRoleByEmail(user.getEmail()));
+            user.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+            user.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+            return Optional.of(repo.save(user));
+        } else {
+            return Optional.empty();
+        }
     }
 
-    public boolean deleteUser(UUID id) {
-        return userDao.remove(id) == 1;
+    private Role getUserRoleByEmail(String email) {
+        return email.contains("ogr") ? Role.STUDENT : Role.ACADEMICIAN;
     }
 
     private boolean emailCheck(String email) {
+        email = email.substring(email.indexOf("@") + 1);
         String domain = "inonu.edu.tr";
         if (email.contains("ogr")) {
             domain = "ogr." + domain;
         }
-        return !email.equals(domain);
+        return email.equals(domain);
     }
+
 }

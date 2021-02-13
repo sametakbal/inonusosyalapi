@@ -1,15 +1,17 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 create table users(
 	id uuid DEFAULT uuid_generate_v4(),
-	profilePicture varchar(255),
-	name varchar(255) not null,
-	surname varchar(255) not null,
-	email varchar(55) not null unique,
-	password varchar(16) not null,
-	gender smallint,
-	status smallint,
+	first_name varchar(255) not null,
+	last_name varchar(255) not null,
+	username varchar(255) not null unique,
+	email varchar(255) not null unique,
+	gender varchar(16) not null,
+	urole varchar(16) not null,
+	phone varchar(16),
 	is_verified boolean default false,
-	last_update TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+	created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+	updated_at TIMESTAMP,
+	deleted_at TIMESTAMP,
 	primary key(id)
 );
 

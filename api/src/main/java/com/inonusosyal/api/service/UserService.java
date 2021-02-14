@@ -35,6 +35,10 @@ public class UserService implements UserDetailsService {
         return repo.findById(uuid);
     }
 
+    public Optional<UserEntity> getUserByEmail(String email){
+        return repo.findByEmail(email);
+    }
+
     public String addUser(UserEntity user) {
         if (repo.findByEmail(user.getEmail()).isPresent()) {
             throw new IllegalStateException("Email already taken!");

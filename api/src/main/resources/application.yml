@@ -1,3 +1,5 @@
+jwt:
+  secret: 'inonu_social_secret'
 spring:
 
   #datasource configuration

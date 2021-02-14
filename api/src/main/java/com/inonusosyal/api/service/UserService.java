@@ -1,23 +1,29 @@
 package com.inonusosyal.api.service;
 
+import com.inonusosyal.api.entity.ConfirmationToken;
 import com.inonusosyal.api.entity.Enums.Role;
 import com.inonusosyal.api.entity.UserEntity;
 import com.inonusosyal.api.repository.IUserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class UserService {
+@AllArgsConstructor
+public class UserService implements UserDetailsService {
     private final IUserRepository repo;
-
-    @Autowired
-    public UserService(IUserRepository repo) {
-        this.repo = repo;
-    }
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final ConfirmationTokenService confirmationTokenService;
+    private final static String USER_NOT_FOUND_MSG =
+            "user with email %s not found";
 
     public Optional<UserEntity> getUserById(String userid) {
         UUID uuid;
@@ -29,18 +35,34 @@ public class UserService {
         return repo.findById(uuid);
     }
 
-    public Optional<UserEntity> addUser(UserEntity user) {
-        if (repo.findByEmail(user.getEmail()) != null || repo.findByEmail(user.getEmail()) != null) {
-            return Optional.empty();
-        }
-        if (emailCheck(user.getEmail())) {
-            user.setRole(getUserRoleByEmail(user.getEmail()));
-            user.setCreatedAt(new Timestamp(System.currentTimeMillis()));
-            user.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
-            return Optional.of(repo.save(user));
+    public String addUser(UserEntity user) {
+        if (repo.findByEmail(user.getEmail()).isPresent()) {
+            throw new IllegalStateException("Email already taken!");
         } else {
-            return Optional.empty();
+            if (repo.findByUsername(user.getUsername()).isPresent()) {
+                throw new IllegalStateException("Username already taken!");
+            } else {
+                if (emailCheck(user.getEmail())) {
+                    String encodedPassword = bCryptPasswordEncoder.encode(user.getPassword());
+                    user.setPassword(encodedPassword);
+                    user.setRole(getUserRoleByEmail(user.getEmail()));
+                    user.setCreatedAt(LocalDateTime.now());
+                    user.setUpdatedAt(LocalDateTime.now());
+                    repo.save(user);
+                    String token = UUID.randomUUID().toString();
+                    ConfirmationToken confirmationToken = new ConfirmationToken(
+                            token,
+                            LocalDateTime.now(),
+                            LocalDateTime.now().plusMinutes(15),
+                            user
+                    );
+                    confirmationTokenService.saveConfirmationToken(confirmationToken);
+                    // TODO: SEND EMAIL
+                    return token;
+                }
+            }
         }
+        return null;
     }
 
     private Role getUserRoleByEmail(String email) {
@@ -56,4 +78,13 @@ public class UserService {
         return email.equals(domain);
     }
 
+    public int enableUser(String email) {
+        return repo.enableUser(email);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return repo.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG, email)));
+    }
 }

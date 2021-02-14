@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @MappedSuperclass
 @Getter
@@ -14,9 +15,9 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 public abstract class BaseEntity{
     @Column(name = "created_at")
-    Timestamp createdAt;
+    LocalDateTime createdAt;
     @Column(name = "updated_at")
-    Timestamp updatedAt;
+    LocalDateTime updatedAt;
     @Column(name = "deleted_at")
-    Timestamp deletedAt;
+    LocalDateTime deletedAt;
 }

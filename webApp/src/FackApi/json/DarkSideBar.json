@@ -1,0 +1,1013 @@
+[
+  {
+    "title": "Dashboard",
+    "name": "sidebar.dashboard",
+    "is_heading": true,
+    "is_active": false,
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": ""
+  },
+  {
+    "title": "Dashboard 1",
+    "name": "sidebar.dashboard1",
+    "is_heading": false,
+    "is_active": false,
+    "link": {
+      "name": "dark.mini.dashboard.home-1"
+    },
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-home-4-line"
+  },
+  {
+    "title": "Dashboard 2",
+    "name": "sidebar.dashboard2",
+    "is_heading": false,
+    "is_active": false,
+    "link": {
+      "name": "dark.dashboard.home-2"
+    },
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-home-3-line"
+  },
+  {
+    "title": "Video Chat",
+    "name": "sidebar.videoChat",
+    "is_heading": false,
+    "is_active": false,
+    "link": {
+      "name": "dark.app.chat"
+    },
+    "append":  "Excusive",
+    "append_class": "badge badge-danger float-right font-weight-normal ml-auto",
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-message-line"
+  },
+  {
+    "title": "App",
+    "name": "sidebar.app",
+    "is_heading": true,
+    "is_active": false,
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": ""
+  },
+  {
+    "title": "E-Commerce",
+    "name": "sidebar.eCommerce",
+    "is_heading": false,
+    "is_active": false,
+    "link": "",
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-shopping-cart-line",
+    "children": [
+      {
+        "title": "Product Listing",
+        "name": "sidebar.productListing",
+        "is_active": false,
+        "link": {
+          "name": "dark.app.e-commerce.index"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-file-list-line"
+      },
+      {
+        "title": "Product Detail",
+        "name": "sidebar.productDetail",
+        "is_active": false,
+        "link": {
+          "name": "dark.app.e-commerce.detail"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-pages-line"
+      },
+      {
+        "title": "Checkout",
+        "name": "sidebar.checkout",
+        "is_active": false,
+        "link": {
+          "name": "dark.app.e-commerce.cart"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-shopping-cart-2-line"
+      },
+      {
+        "title": "Wishlist",
+        "name": "sidebar.wishlist",
+        "is_active": false,
+        "link": {
+          "name": "dark.app.e-commerce.wishlist"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-heart-line"
+      }
+    ]
+  },
+  {
+    "title": "Social App",
+    "name": "sidebar.socialApp",
+    "is_heading": false,
+    "is_active": false,
+    "link": {
+      "name": "dark.social.list"
+    },
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-question-answer-line"
+  },
+  {
+    "title": "Todo",
+    "name": "sidebar.todo",
+    "is_heading": false,
+    "is_active": false,
+    "link": {
+      "name" : "dark.app.todo"
+    },
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-chat-check-line"
+  },
+  {
+    "title": "Project Management",
+    "name": "sidebar.projectManagement",
+    "is_heading": false,
+    "is_active": false,
+    "link": {
+      "name": "dark.app.project.management"
+    },
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-terminal-window-line"
+  },
+  {
+    "title": "Email",
+    "name": "sidebar.email",
+    "is_heading": false,
+    "is_active": false,
+    "link": "",
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-mail-open-line",
+    "children": [
+      {
+        "title": "Inbox",
+        "name": "sidebar.inbox",
+        "is_active": false,
+        "link": {
+          "name" : "dark.app.email"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-inbox-line"
+      },
+      {
+        "title": "Email Compose",
+        "name": "sidebar.emailCompose",
+        "is_active": false,
+        "link": {
+          "name" : "app.email.compose"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-edit-line"
+      }
+    ]
+  },
+  {
+    "title": "Calendar",
+    "name": "sidebar.calendar",
+    "is_heading": false,
+    "is_active": false,
+    "link": {
+      "name" : "dark.app.calendar"
+    },
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-calendar-2-line"
+  },
+  {
+    "title": "User",
+    "name": "sidebar.user",
+    "is_heading": false,
+    "is_active": false,
+    "link": "",
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-user-line",
+    "children": [
+      {
+        "title": "User Profile",
+        "name": "sidebar.userProfile",
+        "is_active": false,
+        "link": {
+          "name" : "dark.user.profile"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-profile-line"
+      },
+      {
+        "title": "User Edit",
+        "name": "sidebar.userEdit",
+        "is_active": false,
+        "link": {
+          "name" : "dark.user.edit"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-file-edit-line"
+      },
+      {
+        "title": "User Add",
+        "name": "sidebar.userAdd",
+        "is_active": false,
+        "link": {
+          "name" : "dark.user.add"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-user-add-line"
+      },
+      {
+        "title": "User List",
+        "name": "sidebar.userList",
+        "is_active": false,
+        "link": {
+          "name" : "dark.user.list"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-file-list-line"
+      }
+    ]
+  },
+
+  {
+    "title": "Components",
+    "name": "sidebar.components",
+    "is_heading": true,
+    "is_active": false,
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": ""
+  },
+  {
+    "title": "UI Elements",
+    "name": "sidebar.uiElements",
+    "is_heading": false,
+    "is_active": false,
+    "class_name": "",
+    "link": "",
+    "is_icon_class": true,
+    "icon": "ri-pencil-ruler-line",
+    "children": [
+      {
+        "title": "Color",
+        "name": "sidebar.color",
+        "is_active": false,
+        "link": {
+          "name": "dark.core.color"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-font-color"
+      },{
+        "title": "Trypography",
+        "name": "sidebar.typography",
+        "is_active": false,
+        "link": {
+          "name": "dark.core.typography"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-text"
+      },
+      {
+        "title": "Alert",
+        "name": "sidebar.alert",
+        "is_active": false,
+        "link": {
+        "name": "dark.core.alert"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-alert-line"
+      },
+      {
+        "title": "Badges",
+        "name": "sidebar.badges",
+        "is_active": false,
+        "link": {
+        "name": "dark.core.badges"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-building-3-line"
+      },
+      {
+        "title": "Breadcrumb",
+        "name": "sidebar.breadcrumb",
+        "is_active": false,
+        "link": {
+        "name": "dark.core.breadcrumb"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-menu-2-line"
+      },
+      {
+        "title": "Button",
+        "name": "sidebar.button",
+        "is_active": false,
+        "link":{
+          "name":"dark.core.button"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-checkbox-blank-line"
+      },
+      {
+        "title": "Cards",
+        "name": "sidebar.cards",
+        "is_active": false,
+        "link":{
+          "name":"dark.core.cards"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-bank-card-line"
+      },
+      {
+        "title": "Carousel",
+        "name": "sidebar.carousel",
+        "is_active": false,
+        "link": {
+          "name":"dark.core.carousel"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-slideshow-line"
+      },
+      {
+        "title": "Video",
+        "name": "sidebar.video",
+        "is_active": false,
+        "link": {
+          "name": "dark.core.embed-video"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-slideshow-2-line"
+      },
+      {
+        "title": "Grid",
+        "name": "sidebar.grid",
+        "is_active": false,
+        "link": {
+          "name":"dark.core.grid"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-grid-line"
+      },
+      {
+        "title": "Images",
+        "name": "sidebar.images",
+        "is_active": false,
+        "link": {
+          "name": "dark.core.images"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-image-line"
+      },
+      {
+        "title": "List group",
+        "name": "sidebar.listGroup",
+        "is_active": false,
+        "link": {
+          "name": "dark.core.listgroup"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-file-list-3-line"
+      },
+      {
+        "title": "Media",
+        "name": "sidebar.media",
+        "is_active": false,
+        "link": {
+          "name": "dark.core.media-object"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-camera-line"
+      },
+      {
+        "title": "Modal",
+        "name": "sidebar.modal",
+        "is_active": false,
+        "link": {
+          "name": "dark.core.modal"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-stop-mini-line"
+      },
+      {
+        "title": "Notifications",
+        "name": "sidebar.notifications",
+        "is_active": false,
+        "link": {
+          "name": "dark.core.notifications"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-notification-line"
+      },
+      {
+        "title": "Pagination",
+        "name": "sidebar.pagination",
+        "is_active": false,
+        "link":{
+          "name":"dark.core.pagination"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-pages-line"
+      },
+      {
+        "title": "Popovers",
+        "name": "sidebar.popovers",
+        "is_active": false,
+        "link": {
+          "name": "dark.core.popovers"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-folder-shield-2-line"
+      },
+      {
+        "title": "Progress Bars",
+        "name": "sidebar.progressBars",
+        "is_active": false,
+        "link":{
+          "name":"dark.core.progressbars"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-battery-low-line"
+      },
+      {
+        "title": "Tabs",
+        "name": "sidebar.tabs",
+        "is_active": false,
+        "link":{
+          "name":"dark.core.tabs"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-database-line"
+      },
+      {
+        "title": "Tooltips",
+        "name": "sidebar.tooltips",
+        "is_active": false,
+        "link": {
+          "name": "dark.core.tooltips"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-record-mail-line"
+      }
+    ]
+  },
+  {
+    "title": "Forms",
+    "name": "sidebar.forms",
+    "is_heading": false,
+    "is_active": false,
+    "link": "",
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-file-list-3-line",
+    "children": [
+      {
+        "title": "Form Elements",
+        "name": "sidebar.formElements",
+        "is_active": false,
+        "link": {
+          "name": "dark.form.layout"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-tablet-line"
+      },
+      {
+        "title": "Form Validation",
+        "name": "sidebar.formValidation",
+        "is_active": false,
+        "link": {
+          "name": "dark.form.validate"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-device-line"
+      },
+      {
+        "title": "Form Switch",
+        "name": "sidebar.formSwitch",
+        "is_active": false,
+        "link": {
+          "name": "dark.form.switch"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-toggle-line"
+      },
+      {
+        "title": "Form Radio",
+        "name": "sidebar.formRadio",
+        "is_active": false,
+        "link": {
+          "name": "dark.form.radio"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-checkbox-line"
+      },
+      {
+        "title": "Form Checkbox",
+        "name": "sidebar.formCheckbox",
+        "is_active": false,
+        "link": {
+          "name": "dark.form.checkbox"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-radio-button-line"
+      }
+    ]
+  },
+  {
+    "title": "Tables",
+    "name": "sidebar.table",
+    "is_heading": false,
+    "is_active": false,
+    "link": "",
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-table-line",
+    "children": [
+      {
+        "title": "Basic Table",
+        "name": "sidebar.basicTable",
+        "is_active": false,
+        "link": {
+          "name": "dark.table.basic"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-table-line"
+      },
+      {
+        "title": "DataTable",
+        "name": "sidebar.dataTable",
+        "is_active": false,
+        "link": {
+          "name": "dark.table.dataTable"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-database-line"
+      },
+      {
+        "title": "Editable",
+        "name": "sidebar.editable",
+        "is_active": false,
+        "link": {
+          "name": "dark.table.editable"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-refund-line"
+      }
+    ]
+  },
+  {
+    "title": "Charts",
+    "name": "sidebar.charts",
+    "is_heading": false,
+    "is_active": false,
+    "link": "",
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-bar-chart-box-line",
+    "children": [
+      {
+        "title": "Morris Charts",
+        "name": "sidebar.morrisChart",
+        "is_active": false,
+        "link": {
+          "name": "dark.chart.morris"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-file-chart-line"
+      },
+      {
+        "title": "High Charts",
+        "name": "sidebar.highChart",
+        "is_active": false,
+        "link": {
+          "name": "dark.chart.high"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-bar-chart-line"
+      },
+      {
+        "title": "AM Charts",
+        "name": "sidebar.amChart",
+        "is_active": false,
+        "link": {
+          "name": "dark.chart.am"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-folder-chart-line"
+      },
+      {
+        "title": "Apex Charts",
+        "name": "sidebar.apexChart",
+        "is_active": false,
+        "link": {
+          "name": "dark.chart.apex"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-folder-chart-2-line"
+      }
+    ]
+  },
+  {
+    "title": "Icons",
+    "name": "sidebar.icons",
+    "is_heading": false,
+    "is_active": false,
+    "link": "",
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-remixicon-line",
+    "children": [
+      {
+        "title": "Dripicons Icon",
+        "name": "sidebar.dripicons",
+        "is_active": false,
+        "link": {
+          "name": "dark.icon.dripicons"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-stack-line"
+      },
+      {
+        "title": "Font Awesome 5",
+        "is_active": false,
+        "link": {
+          "name": "dark.icon.fontawesome-5"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-facebook-fill"
+      },
+      {
+        "title": "Line Awesome Icon",
+        "is_active": false,
+        "link": {
+          "name": "dark.icon.lineawesome"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-keynote-line"
+      },
+      {
+        "title": "Remixicon",
+        "name": "sidebar.rimixIcon",
+        "is_active": false,
+        "link": {
+          "name": "dark.icon.remixicon"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-remixicon-line"
+      },
+      {
+        "title": "Unicons",
+        "name": "sidebar.unicon",
+        "is_active": false,
+        "link": {
+          "name": "dark.icon.unicons"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-underline"
+      }
+    ]
+  },
+  {
+    "title": "Plugins",
+    "name": "sidebar.plugins",
+    "name": "sidebar.plugins",
+    "is_heading": false,
+    "is_active": false,
+    "link": "",
+    "class_name": "",
+    "append":  "New",
+    "append_class": "badge badge-danger badge-pill float-right font-weight-normal ml-auto",
+    "is_icon_class": true,
+    "icon": "ri-plug-line",
+    "children": [
+      {
+        "title": "Datepicker",
+        "name": "sidebar.datepicker",
+        "name": "sidebar.datepicker",
+        "is_active": false,
+        "link": {
+          "name": "dark.plugins.datepicker"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-calendar-2-fill"
+      },
+      {
+        "title": "Select",
+        "name": "sidebar.select",
+        "name": "sidebar.select",
+        "is_active": false,
+        "link": {
+          "name": "dark.plugins.select"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-menu-line"
+      },
+      {
+        "title": "Draggable",
+        "name": "sidebar.draggable",
+        "name": "sidebar.draggable",
+        "is_active": false,
+        "link": {
+          "name": "dark.plugins.draggable"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon":"ri-drag-move-2-fill"
+      },
+      {
+        "title": "TreeView",
+        "name": "sidebar.treeView",
+        "name": "sidebar.treeView",
+        "is_heading": false,
+        "is_active": false,
+        "link": {
+          "name": "dark.app.treeview"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-git-merge-line"
+      }
+    ]
+  },
+  {
+    "title": "Pages",
+    "name": "sidebar.pages",
+    "is_heading": true,
+    "is_active": false,
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-archive-line"
+  },
+  {
+    "title": "Authentication",
+    "name": "sidebar.authentication",
+    "is_heading": false,
+    "is_active": false,
+    "link": "",
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-pages-line",
+    "children": [
+      {
+        "title": "Login",
+        "name": "sidebar.login",
+        "is_active": false,
+        "link": {
+          "name": "dark.auth1.sign-in1"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-login-box-line"
+      },
+      {
+        "title": "Register",
+        "name": "sidebar.register",
+        "is_active": false,
+        "link": {
+          "name": "dark.auth1.sign-up1"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-login-circle-line"
+      },
+      {
+        "title": "Recover Password",
+        "name": "sidebar.recoverPassword",
+        "is_active": false,
+        "link": {
+          "name": "dark.auth1.password-reset1"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-record-mail-line"
+      },
+      {
+        "title": "Confirm Mail",
+        "name": "sidebar.confirmMail",
+        "is_active": false,
+        "link": {
+          "name": "dark.auth1.confirm-mail1"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-file-code-line"
+      },
+      {
+        "title": "Lock Screen",
+        "name": "sidebar.lockScreen",
+        "is_active": false,
+        "link": {
+          "name": "dark.auth1.lock-screen1"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-lock-line"
+      }
+    ]
+  },
+  {
+    "title": "Maps",
+    "name": "sidebar.maps",
+    "is_heading": false,
+    "is_active": false,
+    "link": "",
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-map-pin-user-line",
+    "children": [
+      {
+        "title": "Google Map",
+        "name": "sidebar.googleMap",
+        "is_active": false,
+        "link": {
+          "name": "dark.map.google"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-google-line"
+      }
+    ]
+  },
+  {
+    "title": "Extra Pages",
+    "name": "sidebar.extraPages",
+    "is_heading": false,
+    "is_active": false,
+    "link": "",
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-pantone-line",
+    "children": [
+      {
+        "title": "Timeline",
+        "name": "sidebar.timeline",
+        "is_active": false,
+        "link": {
+          "name": "dark.extra-pages.timeline"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-map-pin-time-line"
+      },
+      {
+        "title": "Invoice",
+        "name": "sidebar.invoice",
+        "is_active": false,
+        "link": {
+          "name": "dark.extra-pages.invoice"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-question-answer-line"
+      },
+      {
+        "title": "Blank Page",
+        "name": "sidebar.blankPage",
+        "is_active": false,
+        "link": {
+          "name": "dark.extra-pages.blank-page"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-invision-line"
+      },
+      {
+        "title": "Error 404",
+        "name": "sidebar.error404",
+        "is_active": false,
+        "link": {
+          "name": "dark.default.error",
+          "params": { "code" : "404"}
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-error-warning-line"
+      },
+      {
+        "title": "Error 500",
+        "name": "sidebar.error500",
+        "is_active": false,
+        "link": {
+          "name": "dark.default.error",
+          "params": { "code" : "500"}
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-error-warning-line"
+      },
+      {
+        "title": "Pricing",
+        "name": "sidebar.pricing",
+        "is_active": false,
+        "link": {
+          "name": "dark.extra-pages.pricing"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-price-tag-line"
+      },
+      {
+        "title": "Pricing 1",
+        "name": "sidebar.pricing1",
+        "is_active": false,
+        "link": {
+          "name": "dark.extra-pages.pricing1"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-price-tag-2-line"
+      },
+      {
+        "title": "Maintenance",
+        "name": "sidebar.maintenance",
+        "is_active": false,
+        "link": {
+          "name": "dark.default.maintenance"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-archive-line"
+      },
+      {
+        "title": "Coming Soon",
+        "name": "sidebar.comingSoon",
+        "is_active": false,
+        "link": {
+          "name": "dark.default.coming-soon"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-mastercard-line"
+      },
+      {
+        "title": "FAQ",
+        "name": "sidebar.faq",
+        "is_active": false,
+        "link": {
+          "name": "dark.extra-pages.faq"
+        },
+        "class_name": "",
+        "is_icon_class": true,
+        "icon": "ri-compasses-line"
+      }
+    ]
+  }
+]

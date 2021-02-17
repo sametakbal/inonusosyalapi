@@ -1,0 +1,74 @@
+// Bootstrap Css
+//@import "~bootstrap/scss/bootstrap";
+//@import "~bootstrap/scss/bootstrap-grid";
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,800,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap');
+@import "../css/bootstrap";
+
+// Animate css
+@import "~animate.css/animate.min.css";
+
+@import '~node-snackbar/src/sass/snackbar.sass';
+
+@mixin light-body {
+  font-family: 'Montserrat', sans-serif; font-weight: 400; font-style: normal; font-size: 14px; line-height: 1.8; padding: 0; margin: 0; color: var(--iq-body-text); background: var(--iq-light);
+}
+@mixin dark-body {
+  font-family: 'Montserrat', sans-serif; font-weight: 400; font-style: normal; font-size: 14px; line-height: 1.8; padding: 0; margin: 0; color: var(--iq-dark-body-text); background: var(--iq-dark-bg);
+}
+@mixin rtl-light-body {
+  font-family: 'Montserrat', sans-serif; font-weight: 400; font-style: normal; font-size: 14px; line-height: 1.8; padding: 0; margin: 0; color: var(--iq-body-text); background: var(--iq-light);
+}
+@mixin rtl-dark-body {
+  font-family: 'Montserrat', sans-serif; font-weight: 400; font-style: normal; font-size: 14px; line-height: 1.8; padding: 0; margin: 0; color: var(--iq-dark-body-text); background: var(--iq-dark-bg);
+}
+// Bootstrap Css
+//@import "~bootstrap/scss/bootstrap";
+//@import "~bootstrap/scss/bootstrap-grid";
+
+@import "../css/bootstrap";
+
+// Animate css
+@import "~animate.css/animate.min.css";
+
+@import '~node-snackbar/src/sass/snackbar.sass';
+
+[dir="ltr"] {
+  &[mode="light"] {
+    body { @include light-body; }
+    @import "../css/light/typography";
+    @import "../css/light/style";
+    @import "../css/light/responsive";
+  }
+  &[mode="dark"] {
+    body { @include dark-body; }
+    @import "../css/dark/typography";
+    @import "../css/dark/style";
+    @import "../css/dark/responsive";
+  }
+}
+
+[dir="rtl"]{
+  &[mode="light"] {
+    body { @include rtl-light-body; }
+    @import "../css/rtl/light/typography";
+    @import "../css/rtl/light/style";
+    @import "../css/rtl/light/responsive";
+  }
+  &[mode="dark"] {
+    body { @include rtl-dark-body; }
+    @import "../css/rtl/dark/typography";
+    @import "../css/rtl/dark/style";
+    @import "../css/rtl/dark/responsive";
+  }
+}
+
+.iq-global-search>ul>li a, .slick-arrow, .breadcrumb-item>a{
+  color: var(--iq-primary);
+  &:hover{
+    color: var(--iq-primary);
+  }
+}
+
+// Font awesome icon Css
+@import "~@fortawesome/fontawesome-free/css/all.min.css";

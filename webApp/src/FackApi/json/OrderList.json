@@ -1,0 +1,42 @@
+[
+  {
+    "name": "D-NO-1",
+    "status": 1,
+    "isActive": false
+  },
+  {
+    "name": "D-NO-2",
+    "status": 1,
+    "isActive": true
+  },
+  {
+    "name": "D-NO-3",
+    "status": 0,
+    "isActive": false
+  },
+  {
+    "name": "D-NO-4",
+    "status": 1,
+    "isActive": false
+  },
+  {
+    "name": "D-NO-5",
+    "status": 0,
+    "isActive": false
+  },
+  {
+    "name": "D-NO-6",
+    "status": 1,
+    "isActive": false
+  },
+  {
+    "name": "D-NO-7",
+    "status": 1,
+    "isActive": false
+  },
+  {
+    "name": "D-NO-8",
+    "status": 1,
+    "isActive": false
+  }
+]

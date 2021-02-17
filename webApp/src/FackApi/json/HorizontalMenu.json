@@ -1,0 +1,458 @@
+[
+  {
+    "title": "Dashboard",
+    "is_heading": false,
+    "is_active": false,
+    "link": "",
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-home-4-line",
+    "children": [
+      {
+        "title": "Dashboard1",
+        "is_active": false,
+        "link": {
+          "name": "dashboard1.home"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Dashboard2",
+        "is_active": false,
+        "link": {
+          "name": "dashboard1.home1"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      }
+    ]
+  },
+  {
+    "title": "App",
+    "is_heading": false,
+    "is_active": false,
+    "link": "",
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-mail-open-line",
+    "children": [
+      {
+        "title": "Email",
+        "is_active": false,
+        "link": {
+          "name" : "app.email"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Calender",
+        "is_heading": false,
+        "is_active": false,
+        "link": {
+          "name" : "app.calendar"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Chat",
+        "is_heading": false,
+        "is_active": false,
+        "link": "",
+        "append":  "Soon",
+        "append_class": "badge badge-pill badge-primary float-right font-weight-normal ml-auto",
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "eCommerce",
+        "is_heading": false,
+        "is_active": false,
+        "link": "",
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      }
+    ]
+  },
+  {
+    "title": "UI Elements",
+    "is_heading": false,
+    "is_active": false,
+    "class_name": "",
+    "link": "",
+    "is_icon_class": true,
+    "icon": "ri-pencil-ruler-line",
+    "children": [
+      {
+        "title": "Color",
+        "is_active": false,
+        "link": {
+          "name": "core.color"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },{
+        "title": "Trypography",
+        "is_active": false,
+        "link": {
+          "name": "core.typography"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Alert",
+        "is_active": false,
+        "link": {
+          "name": "core.alert"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Badges",
+        "is_active": false,
+        "link": {
+          "name": "core.badges"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Breadcrumb",
+        "is_active": false,
+        "link": {
+          "name": "core.breadcrumb"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Button",
+        "is_active": false,
+        "link":{
+          "name":"core.button"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Cards",
+        "is_active": false,
+        "link":{
+          "name":"core.cards"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Carousel",
+        "is_active": false,
+        "link": {
+          "name":"core.carousel"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Video",
+        "is_active": false,
+        "link": {
+          "name": "core.embed-video"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Grid",
+        "is_active": false,
+        "link": {
+          "name":"core.grid"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Images",
+        "is_active": false,
+        "link": {
+          "name": "core.images"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "List group",
+        "is_active": false,
+        "link": {
+          "name": "core.listgroup"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Media",
+        "is_active": false,
+        "link": {
+          "name": "core.media-object"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Modal",
+        "is_active": false,
+        "link": {
+          "name": "core.modal"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Notifications",
+        "is_active": false,
+        "link": {
+          "name": "core.notifications"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Pagination",
+        "is_active": false,
+        "link":{
+          "name":"core.pagination"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Popovers",
+        "is_active": false,
+        "link": {
+          "name": "core.popovers"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Progress Bars",
+        "is_active": false,
+        "link":{
+          "name":"core.progressbars"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Tabs",
+        "is_active": false,
+        "link":{
+          "name":"core.tabs"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Tooltips",
+        "is_active": false,
+        "link": {
+          "name": "core.tooltips"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      }
+    ]
+  },
+  {
+    "title": "Forms",
+    "is_heading": false,
+    "is_active": false,
+    "link": "",
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-file-list-3-line",
+    "children": [
+      {
+        "title": "Form Elements",
+        "is_active": false,
+        "link": {
+          "name": "form.layout"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Form Validation",
+        "is_active": false,
+        "link": {
+          "name": "form.validate"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Form Switch",
+        "is_active": false,
+        "link": {
+          "name": "form.switch"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Form Radio",
+        "is_active": false,
+        "link": {
+          "name": "form.radio"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Form Checkbox",
+        "is_active": false,
+        "link": {
+          "name": "form.checkbox"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      }
+    ]
+  },
+  {
+    "title": "Tables",
+    "is_heading": false,
+    "is_active": false,
+    "link": "",
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-table-line",
+    "children": [
+      {
+        "title": "Basic Table",
+        "is_active": false,
+        "link": {
+          "name": "table.basic"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "DataTable",
+        "is_active": false,
+        "link": {
+          "name": "table.dataTable"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Editable",
+        "is_active": false,
+        "link": {
+          "name": "table.editable"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      }
+    ]
+  },
+  {
+    "title": "Authentication",
+    "is_heading": false,
+    "is_active": false,
+    "link": "",
+    "class_name": "",
+    "is_icon_class": true,
+    "icon": "ri-pages-line",
+    "children": [
+      {
+        "title": "Login",
+        "is_active": false,
+        "link": {
+          "name": "auth1.sign-in1"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Register",
+        "is_active": false,
+        "link": {
+          "name": "auth1.sign-up1"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Recover Password",
+        "is_active": false,
+        "link": {
+          "name": "auth1.password-reset1"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Confirm Mail",
+        "is_active": false,
+        "link": {
+          "name": "auth1.confirm-mail1"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      },
+      {
+        "title": "Lock Screen",
+        "is_active": false,
+        "link": {
+          "name": "auth1.lock-screen1"
+        },
+        "class_name": "",
+        "is_icon_class": false,
+        "icon": ""
+      }
+    ]
+  }
+]

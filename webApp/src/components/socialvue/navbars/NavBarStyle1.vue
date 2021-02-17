@@ -6,7 +6,7 @@
             <div class="iq-navbar-logo d-flex justify-content-between">
               <a href="#">
                 <img :src="logo" class="img-fluid" alt="logo">
-                <span>SocialV</span>
+                <span>Sosyal</span>
               </a>
               <div class="iq-menu-bt align-self-center">
                 <div class="wrapper-menu" @click="miniSidebar">
@@ -16,7 +16,7 @@
             </div>
             <div class="iq-search-bar">
               <form action="#" class="searchbox">
-                  <input type="text" class="text search-input" placeholder="Type here to search...">
+                  <input type="text" class="text search-input" placeholder="Herhangi birşey ara...">
                   <a class="search-link" href="#"><i class="ri-search-line"></i></a>
               </form>
             </div>
@@ -29,7 +29,7 @@
                     <a href="#" class="iq-waves-effect d-flex align-items-center">
                         <img src="../../../assets/images/user/1.jpg" class="img-fluid rounded-circle mr-3" alt="user">
                         <div class="caption">
-                          <h6 class="mb-0 line-height">Bni Cyst</h6>
+                          <h6 class="mb-0 line-height">Samet AKBAL</h6>
                         </div>
                     </a>
                   </li>

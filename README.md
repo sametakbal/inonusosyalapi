@@ -1,2 +1,2 @@
 # inonu_sosyal
-Social Network for Inonu University
+Restful Application Programming Interface for Inonu University

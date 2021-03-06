@@ -37,7 +37,10 @@ public class UserController {
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
-
+        if (!authenticationRequest.getUsername().contains("@")) {
+            Optional<UserEntity> temp = userService.getEmailByUsername(authenticationRequest.getUsername());
+            temp.ifPresent(userEntity -> authenticationRequest.setUsername(userEntity.getEmail()));
+        }
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())

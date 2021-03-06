@@ -17,6 +17,9 @@ public interface IUserRepository extends CrudRepository<UserEntity, UUID> {
 
     Optional<UserEntity> findByUsername(String username);
 
+    @Query("SELECT a FROM UserEntity a  WHERE a.username = ?1")
+    Optional<UserEntity> getEmailByUsername(String username);
+
     @Transactional
     @Modifying
     @Query("UPDATE UserEntity a " +

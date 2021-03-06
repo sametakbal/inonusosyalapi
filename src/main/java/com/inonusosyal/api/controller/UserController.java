@@ -13,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.Serializable;
@@ -49,9 +48,8 @@ public class UserController {
         }
 
         Optional<UserEntity> user = userService.getUserByEmail(authenticationRequest.getUsername());
-
+        if (user.isEmpty()) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         final String jwt = jwtTokenUtil.generateToken(user.get());
-
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
     }
 
@@ -63,11 +61,6 @@ public class UserController {
     @GetMapping(path = "confirm")
     public String confirm(@RequestParam("token") String token) {
         return registrationService.confirmToken(token);
-    }
-
-    @GetMapping(path = "usertest")
-    public String testingLogin(){
-        return "successful login";
     }
 }
 

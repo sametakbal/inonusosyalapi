@@ -1,5 +1,6 @@
 package com.inonusosyal.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.inonusosyal.api.entity.Enums.Gender;
 import com.inonusosyal.api.entity.Enums.Role;
 import lombok.EqualsAndHashCode;
@@ -10,9 +11,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.UUID;
+import java.util.*;
 
 @Getter
 @Setter
@@ -33,12 +32,15 @@ public class UserEntity extends BaseEntity implements UserDetails {
     private String username;
     @Column(name = "email")
     private String email;
+    @JsonIgnore
     @Column(name = "password")
     private String password;
     @Column(name = "phone")
     private String phone;
+    @JsonIgnore
     @Column(name = "enabled")
     private Boolean enabled=false;
+    @JsonIgnore
     @Column(name = "locked")
     private Boolean locked=false;
     @Enumerated(EnumType.STRING)
@@ -47,6 +49,18 @@ public class UserEntity extends BaseEntity implements UserDetails {
     @Enumerated(EnumType.STRING)
     @Column(name = "urole")
     private Role role;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_followers",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "follower_id"))
+    @JsonIgnore
+    private Set<UserEntity> followers;
+
+    @ManyToMany(mappedBy = "followers")
+    @JsonIgnore
+    private Set<UserEntity> followed;
 
 
     public UserEntity(String firstName, String lastName, String username, String email, String password, String phone, String gender) {

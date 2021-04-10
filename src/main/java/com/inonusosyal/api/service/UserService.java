@@ -1,5 +1,6 @@
 package com.inonusosyal.api.service;
 
+import com.inonusosyal.api.dto.UserProfileDto;
 import com.inonusosyal.api.entity.ConfirmationToken;
 import com.inonusosyal.api.entity.Enums.Role;
 import com.inonusosyal.api.entity.UserEntity;
@@ -24,6 +25,20 @@ public class UserService implements UserDetailsService {
     private final ConfirmationTokenService confirmationTokenService;
     private final static String USER_NOT_FOUND_MSG =
             "user with email %s not found";
+
+    public UserProfileDto getUserProfileById(String userid) {
+        UUID uuid;
+        try {
+            uuid = UUID.fromString(userid);
+        } catch (IllegalArgumentException ex) {
+            return null;
+        }
+        Optional<UserEntity> userEntity = repo.findById(uuid);
+        if (!userEntity.isEmpty()) {
+           return new UserProfileDto(userEntity.get(),repo.getUserFollowers(uuid),repo.getUserFollowed(uuid));
+        }
+        return null;
+    }
 
     public Optional<UserEntity> getUserById(String userid) {
         UUID uuid;

@@ -1,5 +1,6 @@
 package com.inonusosyal.api.controller;
 
+import com.inonusosyal.api.dto.UserProfileDto;
 import com.inonusosyal.api.entity.UserEntity;
 import com.inonusosyal.api.jwt.JwtUtil;
 import com.inonusosyal.api.service.RegistrationService;
@@ -35,6 +36,12 @@ public class UserController {
                         .body("user " + userid + " was not found"));
     }
 
+    @GetMapping("/profile/{userid}")
+    public ResponseEntity<UserProfileDto> fetchUserProfile(@PathVariable String userid) {
+        UserProfileDto profileDto = userService.getUserProfileById(userid);
+        return profileDto == null ? new ResponseEntity<>(HttpStatus.BAD_REQUEST) : new ResponseEntity<>(profileDto, HttpStatus.BAD_REQUEST);
+    }
+
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
         if (!authenticationRequest.getUsername().contains("@")) {
@@ -45,8 +52,7 @@ public class UserController {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())
             );
-        }
-        catch (BadCredentialsException e) {
+        } catch (BadCredentialsException e) {
             throw new Exception("Incorrect username or password", e);
         }
 

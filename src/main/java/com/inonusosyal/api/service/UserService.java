@@ -4,15 +4,19 @@ import com.inonusosyal.api.dto.UserProfileDto;
 import com.inonusosyal.api.entity.ConfirmationToken;
 import com.inonusosyal.api.entity.Enums.Role;
 import com.inonusosyal.api.entity.UserEntity;
+import com.inonusosyal.api.entity.UserFollow;
+import com.inonusosyal.api.repository.IUserFollowRepository;
 import com.inonusosyal.api.repository.IUserRepository;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
@@ -21,6 +25,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class UserService implements UserDetailsService {
     private final IUserRepository repo;
+    private final IUserFollowRepository userFollowRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConfirmationTokenService confirmationTokenService;
     private final static String USER_NOT_FOUND_MSG =
@@ -99,6 +104,16 @@ public class UserService implements UserDetailsService {
             domain = "ogr." + domain;
         }
         return email.equals(domain);
+    }
+
+    public int acceptFollowRequest(UUID uuid){
+        return userFollowRepository.acceptFollowRequest(uuid);
+    }
+
+    public UserFollow addFollowRequest(UserFollow userFollow){
+        userFollow.setCreatedAt(LocalDateTime.now());
+        userFollow.setUpdatedAt(LocalDateTime.now());
+        return userFollowRepository.save(userFollow);
     }
 
     public int enableUser(String email) {

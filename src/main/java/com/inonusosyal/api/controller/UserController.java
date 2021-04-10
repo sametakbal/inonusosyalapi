@@ -2,6 +2,7 @@ package com.inonusosyal.api.controller;
 
 import com.inonusosyal.api.dto.UserProfileDto;
 import com.inonusosyal.api.entity.UserEntity;
+import com.inonusosyal.api.entity.UserFollow;
 import com.inonusosyal.api.jwt.JwtUtil;
 import com.inonusosyal.api.service.RegistrationService;
 import com.inonusosyal.api.service.UserService;
@@ -9,15 +10,19 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.catalina.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.Serializable;
 import java.util.Optional;
+import java.util.UUID;
 
 
 @RestController
@@ -71,6 +76,22 @@ public class UserController {
     public String confirm(@RequestParam("token") String token) {
         return registrationService.confirmToken(token);
     }
+
+    @PostMapping(path = "requestfollow")
+    public ResponseEntity<Void> userFollowRequest(@RequestBody UuidForRequest reqBody) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserEntity follower = (UserEntity) authentication.getPrincipal();
+        UserFollow userFollow = new UserFollow();
+        userFollow.setUserId(UUID.fromString(reqBody.getUuid()));
+        userFollow.setFollowerId(follower.getId());
+        return userService.addFollowRequest(userFollow) == null ? new ResponseEntity<>(HttpStatus.BAD_REQUEST)
+                : new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping(path = "acceptrequestfollow")
+    public ResponseEntity<?> acceptUserFollowRequest(@RequestBody UuidForRequest reqBody) {
+        return   new ResponseEntity<>(userService.acceptFollowRequest(UUID.fromString(reqBody.getUuid())),HttpStatus.OK);
+    }
 }
 
 @Getter
@@ -88,4 +109,12 @@ class AuthenticationRequest implements Serializable {
 @AllArgsConstructor
 class AuthenticationResponse implements Serializable {
     private String jwt;
+}
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+class UuidForRequest {
+    private String uuid;
 }

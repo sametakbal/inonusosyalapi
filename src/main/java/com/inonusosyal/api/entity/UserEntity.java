@@ -50,19 +50,6 @@ public class UserEntity extends BaseEntity implements UserDetails {
     @Column(name = "urole")
     private Role role;
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_followers",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "follower_id"))
-    @JsonIgnore
-    private Set<UserEntity> followers;
-
-    @ManyToMany(mappedBy = "followers")
-    @JsonIgnore
-    private Set<UserEntity> followed;
-
-
     public UserEntity(String firstName, String lastName, String username, String email, String password, String phone, String gender) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -80,6 +67,7 @@ public class UserEntity extends BaseEntity implements UserDetails {
         return Collections.singletonList(authority);
     }
 
+    @JsonIgnore
     @Override
     public String getPassword() {
         return password;
